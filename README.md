@@ -2,6 +2,10 @@
 
 This documentation provides an overview of the available data attributes used for initializing Swiper sliders dynamically.
 
+## Demo
+
+Check out a live demo of the Swiper configuration here: [CodePen Demo](https://codepen.io/jedl1503/pen/pvobJbz)
+
 ## Usage
 
 Add the relevant `data-` attributes to your Swiper HTML element to configure the behavior dynamically.
