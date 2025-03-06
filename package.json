@@ -1,0 +1,48 @@
+{
+  "name": "swiper-init-data-attributes",
+  "version": "1.1.0",
+  "description": "Easily configure Swiper.js sliders using HTML data- attributes for dynamic behavior and responsive settings.",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlomat/swiper-init-data-attributes.git"
+  },
+  "keywords": [
+    "swiper",
+    "slider",
+    "carousel",
+    "javascript",
+    "data-attributes"
+  ],
+  "author": "John Lomat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnlomat/swiper-init-data-attributes/issues"
+  },
+  "homepage": "https://github.com/johnlomat/swiper-init-data-attributes#readme",
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "dependencies": {
+    "swiper": "11.2.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "setupFiles": ["./tests/setup.js"],
+    "testMatch": ["**/tests/**/*.test.js"],
+    "collectCoverage": true,
+    "coverageReporters": ["text", "lcov"],
+    "collectCoverageFrom": ["main.js"]
+  }
+}
