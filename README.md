@@ -211,7 +211,14 @@ The test suite verifies:
 
 ## Notes
 
-- Make sure to properly encode JSON objects when using `data-breakpoints`.
+- Make sure to properly encode JSON objects when using `data-breakpoints`. 
+  - To encode your JSON for HTML attributes, use [FreeFormatter's HTML Escape tool](https://www.freeformatter.com/html-escape.html)
+  - Steps to encode breakpoints:
+    1. Format your JSON breakpoints: `{"640":{"slidesPerView":1},"1024":{"slidesPerView":3}}`
+    2. Paste into the HTML Escape tool
+    3. Click "Escape HTML"
+    4. Copy the encoded result (e.g., `{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}} `)
+    5. Use in your HTML: `data-breakpoints="{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}"`
 - Use `data-thumbs` to enable a thumbnail navigation Swiper.
 - Ensure `data-nav-prev` and `data-nav-next` selectors point to valid elements.
 - For pagination, add a `.swiper-pagination` element inside or after your swiper.
