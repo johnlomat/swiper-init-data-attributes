@@ -66,15 +66,42 @@ Add the relevant `data-` attributes to your Swiper HTML element to configure the
 
 ## Breakpoints Formatting
 
-Use the `data-breakpoints` attribute to define different configurations based on screen width. Since attributes cannot contain raw JSON, you must encode it using HTML entities.
+Use the `data-breakpoints` attribute to define different configurations based on screen width. Since HTML attributes cannot contain raw JSON, you must encode it using HTML entities.
 
-### Example
+### Using FreeFormatter to Convert JSON to HTML Entities
 
-```html
-<div class="swiper" data-breakpoints="&amp;#123;&amp;quot;640&amp;quot;:&amp;#123;&amp;quot;slidesPerView&amp;quot;:1&amp;#125;,&amp;quot;1024&amp;quot;:&amp;#123;&amp;quot;slidesPerView&amp;quot;:3&amp;#125;&amp;#125;"></div>
-```
+1. **Go to FreeFormatter's HTML Escape Tool**:
+   - Visit [https://www.freeformatter.com/html-escape.html](https://www.freeformatter.com/html-escape.html)
+
+2. **Enter Your JSON**:
+   - Format your JSON breakpoints object first:
+   ```json
+   {
+     "640": { "slidesPerView": 1 },
+     "1024": { "slidesPerView": 3 }
+   }
+   ```
+   - Paste this into the input field on FreeFormatter
+
+3. **Convert to HTML Entities**:
+   - Select the "Escape HTML" option
+   - Click the "Format HTML" button
+
+4. **Copy the Result**:
+   - The output will be encoded as HTML entities, looking something like:
+   ```
+   {&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}
+   ```
+
+5. **Use in Your HTML**:
+   - Add the encoded string to your Swiper element:
+   ```html
+   <div class="swiper" data-breakpoints="{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}">
+   ```
 
 ### Decoded JSON Equivalent
+
+The encoded attribute above is equivalent to this JSON structure:
 
 ```json
 {
@@ -82,6 +109,8 @@ Use the `data-breakpoints` attribute to define different configurations based on
   "1024": { "slidesPerView": 3 }
 }
 ```
+
+The script's `decodeHTMLEntities` function will automatically convert the HTML entities back to valid JSON when initializing the Swiper.
 
 ---
 
@@ -219,6 +248,7 @@ The test suite verifies:
     3. Click "Escape HTML"
     4. Copy the encoded result (e.g., `{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}} `)
     5. Use in your HTML: `data-breakpoints="{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}"`
+
 - Use `data-thumbs` to enable a thumbnail navigation Swiper.
 - Ensure `data-nav-prev` and `data-nav-next` selectors point to valid elements.
 - For pagination, add a `.swiper-pagination` element inside or after your swiper.
