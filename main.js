@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
           freeMode: el.getAttribute("data-free-mode") === "true",
           watchSlidesProgress: el.getAttribute("data-watch-slides-progress") === "true",
           autoplay:
-            el.getAttribute("data-autoplay") === "false"
+            el.getAttribute("data-autoplay") === "false" || el.getAttribute("data-autoplay") === null
               ? false
               : {
                   delay: parseInt(el.getAttribute("data-autoplay-delay") || 1),
