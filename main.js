@@ -4,7 +4,7 @@
  * A lightweight utility to initialize Swiper instances using HTML data attributes.
  * Enables easy configuration of Swiper sliders without writing JavaScript code.
  *
- * @version 1.1.0
+ * @version 1.2.0
  * @license MIT
  * @author John Lomat
  * @see https://github.com/johnlomat/swiper-init-data-attributes

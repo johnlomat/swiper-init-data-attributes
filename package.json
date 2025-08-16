@@ -1,6 +1,6 @@
 {
   "name": "swiper-init-data-attributes",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Easily configure Swiper.js sliders using HTML data- attributes for dynamic behavior and responsive settings.",
   "main": "main.js",
   "scripts": {
@@ -39,10 +39,19 @@
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": ["./tests/setup.js"],
-    "testMatch": ["**/tests/**/*.test.js"],
+    "setupFiles": [
+      "./tests/setup.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
     "collectCoverage": true,
-    "coverageReporters": ["text", "lcov"],
-    "collectCoverageFrom": ["main.js"]
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "main.js"
+    ]
   }
 }
