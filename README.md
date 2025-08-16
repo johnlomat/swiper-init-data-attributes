@@ -24,6 +24,7 @@ Add the relevant `data-` attributes to your Swiper HTML element to configure the
   data-nav-prev="#prevButton"
   data-nav-next="#nextButton"
   data-thumbs="#thumbSlider"
+  data-scrollbar-hide="false"
   data-breakpoints="&amp;#123;&amp;quot;640&amp;quot;:&amp;#123;&amp;quot;slidesPerView&amp;quot;:1&amp;#125;,&amp;quot;1024&amp;quot;:&amp;#123;&amp;quot;slidesPerView&amp;quot;:3&amp;#125;&amp;#125;"
 >
   <div class="swiper-wrapper">
@@ -33,6 +34,8 @@ Add the relevant `data-` attributes to your Swiper HTML element to configure the
   </div>
   <!-- Pagination element (optional) -->
   <div class="swiper-pagination"></div>
+  <!-- Scrollbar element (optional) -->
+  <div class="swiper-scrollbar"></div>
 </div>
 ```
 
@@ -40,27 +43,28 @@ Add the relevant `data-` attributes to your Swiper HTML element to configure the
 
 ## Data Attributes Reference
 
-| `Attribute`                           | `Description`                                        | `Default` |
-| ----------------------------------- | -------------------------------------------------- | ------- |
-| `data-slides-per-view`              | Number of slides visible at a time.                | `auto`  |
-| `data-centered`                     | Center slides within the viewport.                 | `false` |
-| `data-space-between`                | Space between slides (in pixels).                  | `20`    |
-| `data-loop`                         | Enables infinite loop mode.                        | `false` |
-| `data-speed`                        | Transition speed in milliseconds.                  | `3000`  |
-| `data-allow-touch-move`             | Enables touch interactions.                        | `true`  |
-| `data-grab-cursor`                  | Changes cursor to a grab icon.                     | `false` |
-| `data-free-mode`                    | Enables free mode scrolling.                       | `false` |
-| `data-watch-slides-progress`        | Tracks slides progress for effects.                | `false` |
-| `data-autoplay`                     | Enables autoplay.                                  | `false` |
-| `data-autoplay-delay`               | Autoplay delay in milliseconds.                    | `1`     |
-| `data-autoplay-disable-interaction` | Stops autoplay on user interaction.                | `false` |
-| `data-nav-prev`                     | Selector for previous button navigation.           | `null`  |
-| `data-nav-next`                     | Selector for next button navigation.               | `null`  |
-| `data-thumbs`                       | Selector for thumbs slider.                        | `null`  |
-| `data-pagination-type`              | Type of pagination (bullets, fraction, progressbar)| `bullets` |
-| `data-breakpoints`                  | Responsive settings (see example below).           | `{}`    |
-| `data-disable-swiper-min-width`     | Disables Swiper at screen widths above this value. | `null`  |
-| `data-disable-swiper-max-width`     | Disables Swiper at screen widths below this value. | `null`  |
+| `Attribute`                         | `Description`                                       | `Default` |
+| ----------------------------------- | --------------------------------------------------- | --------- |
+| `data-slides-per-view`              | Number of slides visible at a time.                 | `auto`    |
+| `data-centered`                     | Center slides within the viewport.                  | `false`   |
+| `data-space-between`                | Space between slides (in pixels).                   | `20`      |
+| `data-loop`                         | Enables infinite loop mode.                         | `false`   |
+| `data-speed`                        | Transition speed in milliseconds.                   | `3000`    |
+| `data-allow-touch-move`             | Enables touch interactions.                         | `true`    |
+| `data-grab-cursor`                  | Changes cursor to a grab icon.                      | `false`   |
+| `data-free-mode`                    | Enables free mode scrolling.                        | `false`   |
+| `data-watch-slides-progress`        | Tracks slides progress for effects.                 | `false`   |
+| `data-autoplay`                     | Enables autoplay.                                   | `false`   |
+| `data-autoplay-delay`               | Autoplay delay in milliseconds.                     | `1`       |
+| `data-autoplay-disable-interaction` | Stops autoplay on user interaction.                 | `false`   |
+| `data-nav-prev`                     | Selector for previous button navigation.            | `null`    |
+| `data-nav-next`                     | Selector for next button navigation.                | `null`    |
+| `data-thumbs`                       | Selector for thumbs slider.                         | `null`    |
+| `data-pagination-type`              | Type of pagination (bullets, fraction, progressbar) | `bullets` |
+| `data-scrollbar-hide`               | Hides the scrollbar when not in use.                | `false`   |
+| `data-breakpoints`                  | Responsive settings (see example below).            | `{}`      |
+| `data-disable-swiper-min-width`     | Disables Swiper at screen widths above this value.  | `null`    |
+| `data-disable-swiper-max-width`     | Disables Swiper at screen widths below this value.  | `null`    |
 
 ---
 
@@ -71,24 +75,31 @@ Use the `data-breakpoints` attribute to define different configurations based on
 ### Using FreeFormatter to Convert JSON to HTML Entities
 
 1. **Go to FreeFormatter's HTML Escape Tool**:
+
    - Visit [https://www.freeformatter.com/html-escape.html](https://www.freeformatter.com/html-escape.html)
 
 2. **Enter Your JSON**:
+
    - Format your JSON breakpoints object first:
+
    ```json
    {
      "640": { "slidesPerView": 1 },
      "1024": { "slidesPerView": 3 }
    }
    ```
+
    - Paste this into the input field on FreeFormatter
 
 3. **Convert to HTML Entities**:
+
    - Select the "Escape HTML" option
    - Click the "Format HTML" button
 
 4. **Copy the Result**:
+
    - The output will be encoded as HTML entities, looking something like:
+
    ```
    {&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}
    ```
@@ -96,7 +107,7 @@ Use the `data-breakpoints` attribute to define different configurations based on
 5. **Use in Your HTML**:
    - Add the encoded string to your Swiper element:
    ```html
-   <div class="swiper" data-breakpoints="{&quot;640&quot;:{&quot;slidesPerView&quot;:1},&quot;1024&quot;:{&quot;slidesPerView&quot;:3}}">
+   <div class="swiper" data-breakpoints='{"640":{"slidesPerView":1},"1024":{"slidesPerView":3}}'></div>
    ```
 
 ### Decoded JSON Equivalent
@@ -131,7 +142,7 @@ Each Swiper element gets a `swiperAPI` object with the following methods:
 
 ```javascript
 // Get direct access to the element's API
-const slider = document.querySelector('.swiper');
+const slider = document.querySelector(".swiper");
 
 // Access the Swiper instance
 const swiperInstance = slider.swiperAPI.getInstance();
@@ -149,11 +160,11 @@ All Swiper instances are automatically stored in a global registry for easy acce
 
 ```javascript
 // Access any Swiper instance by its ID or auto-generated identifier
-const mainSlider = window.swiperInstances['my-slider'];
-const thumbsSlider = window.swiperInstances['my-slider-thumbs'];
+const mainSlider = window.swiperInstances["my-slider"];
+const thumbsSlider = window.swiperInstances["my-slider-thumbs"];
 
 // If you have multiple sliders without IDs
-const firstSlider = window.swiperInstances['swiper-0'];
+const firstSlider = window.swiperInstances["swiper-0"];
 ```
 
 ## Custom Events
@@ -162,15 +173,15 @@ The script triggers custom events that you can listen for:
 
 ```javascript
 // Listen for initialization
-document.querySelector('.swiper').addEventListener('swiperInitialized', (event) => {
+document.querySelector(".swiper").addEventListener("swiperInitialized", (event) => {
   // Access the swiper instance and configuration
   const { swiper, config } = event.detail;
-  console.log('Swiper initialized with config:', config);
+  console.log("Swiper initialized with config:", config);
 });
 
 // Listen for destruction
-document.querySelector('.swiper').addEventListener('swiperDestroyed', () => {
-  console.log('Swiper was destroyed');
+document.querySelector(".swiper").addEventListener("swiperDestroyed", () => {
+  console.log("Swiper was destroyed");
 });
 ```
 
@@ -192,9 +203,39 @@ To enable pagination, simply add a `.swiper-pagination` element inside your Swip
 ```
 
 Configure the pagination type with the `data-pagination-type` attribute:
+
 - `bullets` (default) - Show dots for each slide
 - `fraction` - Show current slide number / total slides
 - `progressbar` - Show a progress bar
+
+### Scrollbar Support
+
+To enable a scrollbar, simply add a `.swiper-scrollbar` element inside your Swiper container or its parent:
+
+```html
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <!-- slides here -->
+  </div>
+  <div class="swiper-scrollbar"></div>
+</div>
+```
+
+Configure the scrollbar behavior with the `data-scrollbar-hide` attribute:
+
+- `false` (default) - Scrollbar remains visible
+- `true` - Scrollbar hides when not in use
+
+Example with hidden scrollbar:
+
+```html
+<div class="swiper" data-scrollbar-hide="true">
+  <div class="swiper-wrapper">
+    <!-- slides here -->
+  </div>
+  <div class="swiper-scrollbar"></div>
+</div>
+```
 
 ### Performance Optimizations
 
@@ -228,6 +269,7 @@ npm run test:watch
 Automated testing is set up with GitHub Actions. Every push and pull request triggers automated tests to ensure code quality and stability.
 
 The test suite verifies:
+
 - All data attributes function correctly
 - Responsive behavior works as expected
 - JavaScript API methods operate properly
@@ -240,7 +282,8 @@ The test suite verifies:
 
 ## Notes
 
-- Make sure to properly encode JSON objects when using `data-breakpoints`. 
+- Make sure to properly encode JSON objects when using `data-breakpoints`.
+
   - To encode your JSON for HTML attributes, use [FreeFormatter's HTML Escape tool](https://www.freeformatter.com/html-escape.html)
   - Steps to encode breakpoints:
     1. Format your JSON breakpoints: `{"640":{"slidesPerView":1},"1024":{"slidesPerView":3}}`
